@@ -9,6 +9,8 @@ import LoadingBox from '../component/LoadingBox'
 import SelectComponent from '../component/SelectComponent'
 import { jobTypeLoadAction } from '../redux/actions/jobTypeAction'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Navbar from '../component/Navbar'
+import Footer from '../component/Footer'
 
 
 
@@ -37,7 +39,7 @@ const Home = () => {
     return (
         <>
             <Box sx={{ bgcolor: "#fafafa", minHeight: "100vh" }}>
-
+                <Navbar />
                 <Header />
                 <Container>
                     <Stack
@@ -116,6 +118,7 @@ const Home = () => {
                         </Box>
                     </Stack>
                 </Container>
+                <Footer />
             </Box>
 
         </>

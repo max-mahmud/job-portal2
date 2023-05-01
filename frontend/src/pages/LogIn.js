@@ -1,5 +1,7 @@
 import { Avatar, Box } from '@mui/material'
 import React, { useEffect } from 'react'
+import Footer from '../component/Footer'
+import Navbar from '../component/Navbar'
 import LockClockOutlined from '@mui/icons-material/LockClockOutlined'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -48,6 +50,7 @@ const LogIn = () => {
 
     return (
         <>
+            <Navbar />
             <Box sx={{ height: '81vh', display: "flex", alignItems: "center", justifyContent: "center" }}>
 
 
@@ -92,6 +95,7 @@ const LogIn = () => {
                     </Box>
                 </Box>
             </Box>
+            <Footer />
         </>
     )
 }
