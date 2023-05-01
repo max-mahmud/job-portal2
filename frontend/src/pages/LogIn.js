@@ -1,5 +1,5 @@
 import { Avatar, Box } from '@mui/material'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from '../component/Footer'
 import Navbar from '../component/Navbar'
 import LockClockOutlined from '@mui/icons-material/LockClockOutlined'
@@ -10,6 +10,9 @@ import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux'
 import { userSignInAction } from '../redux/actions/userAction'
 import { useNavigate } from 'react-router-dom'
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+
 
 const validationSchema = yup.object({
     email: yup
@@ -47,7 +50,10 @@ const LogIn = () => {
         }
 
     })
-
+    const [state, setState]= useState(false)
+    const toggle=()=>{
+        setState(prevState => !prevState)
+    }
     return (
         <>
             <Navbar />
@@ -74,12 +80,13 @@ const LogIn = () => {
                             error={formik.touched.email && Boolean(formik.errors.email)}
                             helperText={formik.touched.email && formik.errors.email}
                         />
+                        <div className="mylogin">
                         <TextField sx={{ mb: 3 }}
                             fullWidth
                             id="password"
                             name="password"
                             label="Password"
-                            type="password"
+                            type={state?"text":"password"}
                             InputLabelProps={{
                                 shrink: true,
                             }}
@@ -89,7 +96,9 @@ const LogIn = () => {
                             onBlur={formik.handleBlur}
                             error={formik.touched.password && Boolean(formik.errors.password)}
                             helperText={formik.touched.password && formik.errors.password}
-                        />
+                        className="loginCLass"/>
+                        <Button onClick={toggle} className="loginClass2">{state?<VisibilityOffIcon />:<VisibilityIcon />}</Button>
+                        </div>
 
                         <Button fullWidth variant="contained" type='submit' >Log In</Button>
                     </Box>

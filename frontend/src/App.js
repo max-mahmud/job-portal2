@@ -32,6 +32,7 @@ const App = () => {
                         <Route path='/search/:keyword' element={<Home />} />
                         <Route path='/login' element={<LogIn />} />
                         <Route path='/user/dashboard' element={<UserRoute>< UserDashboardHOC /></UserRoute>} />
+                        <Route path='/user/jobs' element={<UserRoute>< UserJobsHistoryHOC /></UserRoute>} />
                         <Route path='*' element={<NotFound />} />
                     </Routes>
                 </BrowserRouter>

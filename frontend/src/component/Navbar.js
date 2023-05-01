@@ -23,6 +23,7 @@ const pages = ['Home', 'Log In'];
 const Navbar = () => {
     //show / hide button
     const { userInfo } = useSelector(state => state.signIn);
+    const [render, setRender] = React.useState(false)
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -48,7 +49,8 @@ const Navbar = () => {
     // log out user
     const logOutUser = () => {
         dispatch(userLogoutAction());
-        window.location.reload(true);
+        // window.location.reload(true);
+        setRender(true)
         setTimeout(() => {
             navigate('/');
         }, 500)

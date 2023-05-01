@@ -44,6 +44,8 @@ const jobsHistorySchema = new mongoose.Schema({
 
 }, { timestamps: true })
 
+module.exports = mongoose.model("jobhistory", jobsHistorySchema)
+
 const userSchema = new mongoose.Schema({
 
     firstName: {

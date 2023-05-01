@@ -19,3 +19,15 @@
   border-left-width: 1px;
   border-right-width: 1px;
 }
+
+.mylogin{
+  display: flex !important;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+.loginClass2{
+  position: absolute !important;
+  top:10px ;
+  right: 10px ;
+}
