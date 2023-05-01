@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../component/Navbar'
 import Header from '../component/Header'
 import { Box, Card, Container, ListItemIcon, MenuItem, MenuList, Pagination, Stack, Typography, useTheme } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { jobLoadAction } from '../redux/actions/jobAction'
 import { Link, useParams } from 'react-router-dom'
 import CardElement from '../component/CardElement'
-import Footer from '../component/Footer'
 import LoadingBox from '../component/LoadingBox'
 import SelectComponent from '../component/SelectComponent'
 import { jobTypeLoadAction } from '../redux/actions/jobTypeAction'
@@ -40,7 +38,6 @@ const Home = () => {
         <>
             <Box sx={{ bgcolor: "#fafafa", minHeight: "100vh" }}>
 
-                <Navbar />
                 <Header />
                 <Container>
                     <Stack
@@ -120,7 +117,6 @@ const Home = () => {
                     </Stack>
                 </Container>
             </Box>
-            <Footer />
 
         </>
     )
