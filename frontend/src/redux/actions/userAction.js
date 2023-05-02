@@ -7,6 +7,9 @@ import {
     USER_APPLY_JOB_FAIL,
     USER_APPLY_JOB_REQUEST,
     USER_APPLY_JOB_SUCCESS,
+    USER_CREATE_FAIL,
+    USER_CREATE_REQUEST,
+    USER_CREATE_SUCCESS,
     USER_LOAD_FAIL,
     USER_LOAD_REQUEST,
     USER_LOAD_SUCCESS,
@@ -111,6 +114,50 @@ export const userApplyJobAction = (job) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: USER_APPLY_JOB_FAIL,
+            payload: error.response.data.error
+        });
+        toast.error(error.response.data.error);
+    }
+}
+
+// userRegister
+
+
+
+//Create user
+export const userCreateAction = (user) => async (dispatch) => {
+    dispatch({ type: USER_CREATE_REQUEST });
+    try {
+        const { data } = await axios.post("/api/signup", user);
+        dispatch({
+            type: USER_CREATE_SUCCESS,
+            payload: data
+        });
+        toast.success(" Create Successfully!");
+    } catch (error) {
+        dispatch({
+            type: USER_CREATE_FAIL,
+            payload: error.response.data.error
+        });
+        toast.error(error.response.data.error);
+    }
+}
+
+// /admin/user/delete/:id
+//delete
+
+export const deleteUserAction = (id) => async (dispatch) => {
+    dispatch({ type: USER_LOAD_REQUEST });
+    try {
+        const { data } = await axios.delete(`/api/user/${id}`);
+        dispatch({
+            type: USER_LOAD_SUCCESS,
+            payload: data
+        });
+        toast.success("User Deleted Successfully!");
+    } catch (error) {
+        dispatch({
+            type: USER_LOAD_FAIL,
             payload: error.response.data.error
         });
         toast.error(error.response.data.error);

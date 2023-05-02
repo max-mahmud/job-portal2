@@ -7,6 +7,14 @@ import {
     USER_APPLY_JOB_REQUEST,
     USER_APPLY_JOB_RESET,
     USER_APPLY_JOB_SUCCESS,
+    USER_CREATE_FAIL,
+    USER_CREATE_REQUEST,
+    USER_CREATE_RESET,
+    USER_CREATE_SUCCESS,
+    USER_DELETE_FAIL,
+    USER_DELETE_REQUEST,
+    USER_DELETE_RESET,
+    USER_DELETE_SUCCESS,
     USER_LOAD_FAIL,
     USER_LOAD_REQUEST,
     USER_LOAD_RESET,
@@ -116,6 +124,48 @@ export const allUserReducer = (state = { users: [] }, action) => {
         case ALL_USER_LOAD_FAIL:
             return { loading: false, users: [], error: action.payload }
         case ALL_USER_LOAD_RESET:
+            return {}
+        default:
+            return state;
+    }
+
+}
+
+
+export const userReducerCreateUser = (state = {}, action) => {
+    switch (action.type) {
+        case USER_CREATE_REQUEST:
+            return { loading: true }
+        case USER_CREATE_SUCCESS:
+            return {
+
+                loading: false,
+                newUser: action.payload,
+            }
+        case USER_CREATE_FAIL:
+            return { loading: false,  error: action.payload }
+        case USER_CREATE_RESET:
+            return {}
+        default:
+            return state;
+    }
+
+}
+
+
+// /admin/user/delete/:id
+export const userReducerDeleteUser = (state = {}, action) => {
+    switch (action.type) {
+        case USER_DELETE_REQUEST:
+            return { loading: true }
+        case USER_DELETE_SUCCESS:
+            return {
+                loading: false,
+                deletedUser: action.payload,
+            }
+        case USER_DELETE_FAIL:
+            return { loading: false, error: action.payload }
+        case USER_DELETE_RESET:
             return {}
         default:
             return state;
