@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -16,14 +16,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { userLogoutAction } from '../redux/actions/userAction';
+import { useState } from 'react';
+
 
 const pages = ['Home', 'Log In'];
 
 
 const Navbar = () => {
     //show / hide button
+    const [render, setRender]= useState(false)
     const { userInfo } = useSelector(state => state.signIn);
-    const [render, setRender] = React.useState(false)
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -174,7 +176,10 @@ const Navbar = () => {
                         >
 
                             <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.primary.main }} to="/admin/dashboard">Dashboard</Link></Typography>
+                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.primary.main }} to="/admin/dashboard">Admin Dashboard</Link></Typography>
+                            </MenuItem>
+                            <MenuItem onClick={handleCloseUserMenu}>
+                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.primary.main }} to="/user/dashboard">User Dashboard</Link></Typography>
                             </MenuItem>
 
                             {
@@ -188,8 +193,6 @@ const Navbar = () => {
                                         <Typography style={{ textDecoration: "none", color: palette.primary.main }} textAlign="center">Log Out</Typography>
                                     </MenuItem>
                             }
-
-
                         </Menu>
                     </Box>
                 </Toolbar>
