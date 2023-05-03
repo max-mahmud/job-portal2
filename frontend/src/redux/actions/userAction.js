@@ -149,7 +149,7 @@ export const userCreateAction = (user) => async (dispatch) => {
 export const deleteUserAction = (id) => async (dispatch) => {
     dispatch({ type: USER_LOAD_REQUEST });
     try {
-        const { data } = await axios.delete(`/api/user/${id}`);
+        const { data } = await axios.delete(`/api/user/delete/${id}`);
         dispatch({
             type: USER_LOAD_SUCCESS,
             payload: data

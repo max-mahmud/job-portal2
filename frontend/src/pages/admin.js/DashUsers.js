@@ -5,7 +5,7 @@ import { Link, NavLink, useParams } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment'
-import { allUserAction } from '../../redux/actions/userAction';
+import { allUserAction, deleteUserAction } from '../../redux/actions/userAction';
 
 const DashUsers = () => {
 
@@ -30,8 +30,10 @@ const DashUsers = () => {
         dispatch(allUserAction(id));
     }, [id]);
 
+ const { deleteUser } = useSelector(state => state.userDelete)
     const deleteUserById = (e, id) => {
-        console.log(id)
+        dispatch(deleteUser(id));
+
     }
 
     
